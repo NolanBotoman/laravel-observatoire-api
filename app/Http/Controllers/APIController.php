@@ -89,7 +89,8 @@ class APIController extends Controller {
 	}
 
 	function delete(Request $request) {
-		if (Booking::getBooking($request->token)) {
+
+		if (!empty(Booking::getBooking($request->token))) {
 
 			if (Booking::remove($request->token)) {
 				return ["Result" => "Votre réservation a bien été supprimée. Nous sommes désolés de l'apprendre."];
